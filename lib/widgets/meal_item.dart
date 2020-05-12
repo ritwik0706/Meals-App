@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/models/meal.dart';
-import 'package:meals_app/screens/meal_details_screen.dart';
+
+import '../models/meal.dart';
+import '../screens/meal_details_screen.dart';
 
 class MealItem extends StatelessWidget {
   final String id;
@@ -9,10 +10,8 @@ class MealItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
-  final Function deleteItemHandler;
 
   MealItem({
-    @required this.deleteItemHandler,
     @required this.id,
     @required this.title,
     @required this.imgUrl,
@@ -25,10 +24,7 @@ class MealItem extends StatelessWidget {
     Navigator.of(ctx).pushNamed(
       MealDetailsScreen.routeName,
       arguments: id,
-    ).then((value) {
-      print(value);
-      deleteItemHandler(value);
-    });
+    );
   }
 
   String get complexityText {
